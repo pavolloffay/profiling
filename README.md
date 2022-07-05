@@ -144,3 +144,4 @@ sys+user can be higher than real on multicore systems
 * Profiling golang applications: https://www.youtube.com/watch?v=nok0aYiGiYA
 * https://steveazz.xyz/blog/go-performance-tools-cheat-sheet/
 * Gitlab profiling: https://www.youtube.com/watch?v=0_oTkC6HYPA
+* Memory profiling https://jvns.ca/blog/2017/09/24/profiling-go-with-pprof/
