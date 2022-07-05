@@ -6,9 +6,9 @@
 
 An application can expose HTTP pprof APIs:
 
-* `/debug/pprof/goroutine` - responds tack traces of all current goroutines
-* `/debug/pprof/profile` - responds with the pprof-formatted cpu profile
-* `/debug/pprof/heap` - responds with the pprof-formatted cpu profile
+* `/debug/pprof/goroutine` - tracks all current goroutines
+* `/debug/pprof/profile` - pprof-formatted cpu profile
+* `/debug/pprof/heap` - pprof-formatted heap profile
 * `/debug/pprof/cmdline` - responds with the running program's
 
 ```bash
