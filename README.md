@@ -12,8 +12,11 @@ An application can expose HTTP pprof APIs:
 * `/debug/pprof/cmdline` - responds with the running program's
 
 ```bash
-go tool pprof -http=:8080 http://localhost:14269/debug/pprof/profile?seconds=30
+go tool pprof -http=:/tmp/go-build1799250859/b001/exe/main http://localhost:14269/debug/pprof/profile?seconds=30
 ```
+
+The path to binary is needed to capture source code.
+
 
 ```bash
 go tool pprof http://localhost:14269/debug/pprof/profile?seconds=30
@@ -109,6 +112,12 @@ wget http://localhost:14269/debug/pprof/trace
 go tool trace -http=:8080 trace
 ```
 
+#### Compare profiles
+
+```
+go tool pprof -http :8080 --diff_base=/main.prof /best.prof
+```
+
 ### Parca
 
 ```bash
@@ -125,3 +134,9 @@ time ls
 * user - CPU time spent in the user space executing the code
 
 sys+user can be higher than real on multicore systems
+
+## Resources
+
+* Profiling golang applications: https://www.youtube.com/watch?v=nok0aYiGiYA
+* https://steveazz.xyz/blog/go-performance-tools-cheat-sheet/
+* Gitlab profiling: https://www.youtube.com/watch?v=0_oTkC6HYPA
