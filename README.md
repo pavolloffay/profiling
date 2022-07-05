@@ -2,14 +2,18 @@
 
 ### Golang pprof
 
+Profiling periodically (e.g. 1ms) stops the process and gets stack traces from all goroutines. "The one function that shows up the most usually is taking the most time."
+
 #### Getting profile from HTTP
 
 An application can expose HTTP pprof APIs:
 
 * `/debug/pprof/goroutine` - tracks all current goroutines
 * `/debug/pprof/profile` - pprof-formatted cpu profile
-* `/debug/pprof/heap` - pprof-formatted heap profile
+* `/debug/pprof/heap` - pprof-formatted heap profile. The stack traces in the heap profile are stack trace at the time of allocation. For instance a function could allocate memory, return and other function that is freeing the memory is misbehaving but the function in the profile is the one that allocated the memory.
 * `/debug/pprof/cmdline` - responds with the running program's
+
+All profiles are just collections of stacktraces, maybe with some additional metadata attached. For instance in heap profile the stacktrace has a number of bytes of memory attached to it. 
 
 ```bash
 go tool pprof -http=:/tmp/go-build1799250859/b001/exe/main http://localhost:14269/debug/pprof/profile?seconds=30
